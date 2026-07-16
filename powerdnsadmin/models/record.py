@@ -5,7 +5,6 @@ import dns.inet
 import dns.name
 from flask import current_app
 from urllib.parse import urljoin
-from distutils.util import strtobool
 from itertools import groupby
 
 from .. import utils
@@ -13,6 +12,7 @@ from .base import db
 from .setting import Setting
 from .domain import Domain
 from .domain_setting import DomainSetting
+from ..lib.utils import strtobool
 
 
 def by_record_content_pair(e):

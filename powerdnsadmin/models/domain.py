@@ -4,7 +4,6 @@ import traceback
 from flask import current_app
 from flask_login import current_user
 from urllib.parse import urljoin
-from distutils.util import strtobool
 
 from ..lib import utils
 from .base import db, domain_apikey
@@ -15,6 +14,7 @@ from .account import AccountUser
 from .domain_user import DomainUser
 from .domain_setting import DomainSetting
 from .history import History
+from ..lib.utils import strtobool
 
 
 class Domain(db.Model):

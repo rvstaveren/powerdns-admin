@@ -7,13 +7,13 @@ import ipaddress
 import base64
 import string
 from zxcvbn import zxcvbn
-from distutils.util import strtobool
 from yaml import Loader, load
 from flask import Blueprint, render_template, make_response, url_for, current_app, g, session, request, redirect, abort
 from flask_login import login_user, logout_user, login_required, current_user
 
 from .base import captcha, csrf, login_manager
 from ..lib import utils
+from ..lib.utils import strtobool
 from ..decorators import dyndns_login_required
 from ..models.base import db
 from ..models.user import User, Anonymous

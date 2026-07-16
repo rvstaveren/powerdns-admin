@@ -6,7 +6,7 @@ import ipaddress
 import idna
 
 from collections.abc import Iterable
-from distutils.version import StrictVersion
+from packaging.version import Version
 from urllib.parse import urlparse
 
 
@@ -188,7 +188,7 @@ def pdns_api_extended_uri(version):
     """
     Check the pdns version
     """
-    if StrictVersion(version) >= StrictVersion('4.0.0'):
+    if Version(version) >= Version('4.0.0'):
         return "/api/v1"
     else:
         return ""
@@ -273,3 +273,17 @@ def format_datetime(value, format_str="%Y-%m-%d %I:%M %p"):
     if value is None:
         return ""
     return value.strftime(format_str)
+
+def strtobool (val):
+    """Convert a string representation of truth to true (1) or false (0).
+    True values are 'y', 'yes', 't', 'true', 'on', and '1'; false values
+    are 'n', 'no', 'f', 'false', 'off', and '0'.  Raises ValueError if
+    'val' is anything else.
+    """
+    val = val.lower()
+    if val in ('y', 'yes', 't', 'true', 'on', '1'):
+        return 1
+    elif val in ('n', 'no', 'f', 'false', 'off', '0'):
+        return 0
+    else:
+        raise ValueError("invalid truth value %r" % (val,))
